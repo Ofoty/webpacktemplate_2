@@ -1,4 +1,5 @@
 import printMe from './print.js';
+import './style.css';
 
 
 + async function getComponent() {
