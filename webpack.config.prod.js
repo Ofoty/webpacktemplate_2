@@ -22,6 +22,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
               importLoaders: 1,
             },
           },
+          'postcss-loader',
         ],
       }
     ]
