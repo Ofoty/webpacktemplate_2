@@ -1,5 +1,5 @@
  - [x] postcss
- - [ ] favicon
+ - [x] favicon
  - [ ] cache
  - [ ] components(BEM)
  - [ ] imagemin
