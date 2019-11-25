@@ -7,4 +7,4 @@
  - [ ] svg sprites + min
  - [ ] Babelь
  - [ ] style linting
-
+ 
