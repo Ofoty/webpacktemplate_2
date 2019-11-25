@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -11,6 +12,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
+        
         test: /\.css$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
@@ -37,7 +39,13 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true,
-    }}),
+    },
+  }), new FaviconsWebpackPlugin({
+    logo: './src/static/favicon.png',
+    publicPath: '.',
+    prefix: 'favicon/',
+    outputPath: '/favicon',
+  }),
   ],
   optimization: {
     minimize: true,
