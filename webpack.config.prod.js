@@ -12,7 +12,6 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
-        
         test: /\.css$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
@@ -27,7 +26,27 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
           },
           'postcss-loader',
         ],
-      }
+      },{
+        test: /\.(png|jpeg|gif|svg|jpg)$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
+        use: [
+          'cache-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[contenthash].[ext]',
+              context: 'src/assets/img/',
+              outputPath: 'img',
+            }
+          }, {
+            loader: 'image-webpack-loader',
+            options: {
+
+            },
+          },
+        ],
+      },
     ]
   },
   plugins: [

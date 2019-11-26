@@ -24,20 +24,6 @@ module.exports = {
   module: {
       rules: [
         {
-          test: /\.(png|jpe?g|gif|svg)$/,
-          use: [
-            'cache-loader',
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[path][name].[hash].[ext]',
-                context: 'src/assets/img',
-                outputPath: 'img',
-              }
-            }
-          ],
-        },
-        {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
           use: [
             'cache-loader',

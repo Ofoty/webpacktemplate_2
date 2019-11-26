@@ -40,7 +40,22 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             }
           },
         ],
-      }
+      },{
+        test: /\.(png|jpeg|gif|svg|jpg)$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
+        use: [
+          'cache-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[contenthash].[ext]',
+              context: 'src/assets/img/',
+              outputPath: 'img',
+            },
+          },
+        ],
+      },
     ]
   },
   plugins: [

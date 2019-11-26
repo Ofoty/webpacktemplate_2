@@ -1,9 +1,9 @@
 - [x] postcss
 - [x] favicon
 - [x] cache
-- [ ] components(BEM)
-- [ ] imagemin
-- [ ] html templating 
-- [ ] svg sprites + min 
+- [x] imagemin
+- [ ] svg sprites + min
 - [ ] Babelь
-- [ ] style linting 
+- [ ] style linting
+- [ ] html templating
+- [ ] components(BEM)
