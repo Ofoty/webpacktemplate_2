@@ -2,8 +2,8 @@
 - [x] favicon
 - [x] cache
 - [ ] imagemin
-- [ ] html templating 
 - [ ] svg sprites + min 
 - [ ] Babelь
 - [ ] style linting 
 - [ ] components(BEM)
+- [ ] html templating 
