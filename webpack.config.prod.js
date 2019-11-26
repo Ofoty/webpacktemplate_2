@@ -17,8 +17,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
         use: [
-          'cache-loader', 
           MiniCssExtractPlugin.loader,
+          'cache-loader', 
           {
             loader: 'css-loader',
             options: {
