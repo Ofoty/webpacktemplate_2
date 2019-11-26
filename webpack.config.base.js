@@ -25,6 +25,8 @@ module.exports = {
       rules: [
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
+          exclude: /node_modules/,
+          include: path.resolve(__dirname, 'src'),
           use: [
             'cache-loader',
             {
@@ -36,7 +38,14 @@ module.exports = {
               }
             }
           ],
-        },
+        }, {
+          test: /\.html$/,
+          exclude: /node_modules/,
+          include: path.resolve(__dirname, 'src'),
+          use: [
+            'html-loader'
+          ]
+        }
       ],
     },
 };
