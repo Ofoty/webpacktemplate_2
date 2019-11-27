@@ -55,8 +55,25 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             },
           },
         ],
+      },{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
+        use: [
+          'cache-loader',
+          'babel-loader',
+          {
+            loader: 'eslint-loader',
+            options: {
+              fix: true,
+              emitError: true,
+              emitWarning: true,
+              failOnError: false,
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
