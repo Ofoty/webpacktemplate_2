@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -79,6 +80,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       minify: false
+    }),new StylelintPlugin({
+      configFile: '.stylelintrc.json',
+      context: 'src',
+      files: '**/*.css',
+      emitWarning: true,
+      fix: true,
     }),
   ],
 })

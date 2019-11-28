@@ -1,1 +1,3 @@
-console.log(1)
+const print = message => console.log(message);
+
+print('Hello Babel!');

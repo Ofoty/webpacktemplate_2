@@ -3,7 +3,7 @@
 - [x] cache
 - [x] imagemin
 - [x] Babel 
+- [x] style linting
 - [ ] svg sprites + min
-- [ ] style linting
 - [ ] html templating
 - [ ] components(BEM)
