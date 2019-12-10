@@ -5,7 +5,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
@@ -28,7 +28,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
           'postcss-loader',
         ],
       },{
-        test: /\.(png|jpeg|gif|svg|jpg)$/,
+        test: /\.(png|jpeg|gif|jpg)$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
         use: [
@@ -55,12 +55,30 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
           'cache-loader',
           'babel-loader',
         ]
-      }
+      },{
+        test: /\.svg$/,
+        use: [
+          // 'cache-loader',
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: '[name]',
+              extract: true,
+              spriteFilename: `img/sprite.svg`,
+            },
+          }, {
+            loader: 'svgo-loader',
+            options: {
+              externalConfig: '.svgo.yaml',
+            },
+          },
+        ],
+      },
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/views/index.ejs',
       minify: {
         collapseWhitespace: true,
         removeComments: true,
@@ -74,6 +92,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     publicPath: '.',
     prefix: 'favicon/',
     outputPath: '/favicon',
+  }), new SpriteLoaderPlugin({
+    plainSprite: true,
   }),
   ],
   optimization: {

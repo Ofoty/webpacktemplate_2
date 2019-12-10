@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -42,7 +43,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           },
         ],
       },{
-        test: /\.(png|jpeg|gif|svg|jpg)$/,
+        test: /\.(png|jpeg|gif|jpg)$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
         use: [
@@ -73,19 +74,34 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             },
           },
         ],
+      },{
+        test: /\.svg$/,
+        use: [
+          // 'cache-loader',
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              symbolId: '[name]',
+              extract: true,
+              spriteFilename: 'img/sprite.svg',
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/views/index.ejs',
       minify: false
-    }),new StylelintPlugin({
+    }), new StylelintPlugin({
       configFile: '.stylelintrc.json',
       context: 'src',
       files: '**/*.css',
       emitWarning: true,
       fix: true,
+    }), new SpriteLoaderPlugin({
+      plainSprite: true,
     }),
   ],
 })

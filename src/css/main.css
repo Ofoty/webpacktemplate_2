@@ -1,12 +1,6 @@
 body {
-  display: flex;
+  background-color: #FFF;
 }
 
-a {
-  color: #000;
-}
 
-html {
-  box-sizing: border-box;
-}
 

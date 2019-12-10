@@ -42,10 +42,13 @@ module.exports = {
           test: /\.html$/,
           exclude: /node_modules/,
           include: path.resolve(__dirname, 'src'),
-          use: [
-            'html-loader'
-          ]
-        }
+          use: {
+            loader: 'html-loader',
+            options: {
+              interpolate: true
+            }
+          }
+        },
       ],
     },
 };

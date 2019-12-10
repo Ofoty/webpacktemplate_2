@@ -4,6 +4,7 @@
 - [x] imagemin
 - [x] Babel 
 - [x] style linting
-- [ ] svg sprites + min
-- [ ] html templating
+- [x] svg sprites + min
+- [x] html templating
+- [ ] ITCSS
 - [ ] components(BEM)
