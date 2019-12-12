@@ -1,6 +1,11 @@
+@import './helpers/variables.css';
+@import './base/reset.css';
+
 body {
+  font-size: var(--main-font-size);
   background-color: #FFF;
 }
+
 
 
 

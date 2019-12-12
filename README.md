@@ -6,5 +6,5 @@
 - [x] style linting
 - [x] svg sprites + min
 - [x] html templating
-- [ ] ITCSS
+- [x] ITCSS
 - [ ] components(BEM)
